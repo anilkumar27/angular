@@ -4,7 +4,7 @@
 <ol>
   <li ng-repeat ="item in list.items">
   	{{item.name}}, {{item.short_name}}, {{item.description}}
-  	<button ng-click="list.onRemove({index: $index});">
+  	<button class="btn btn-danger" ng-click="list.onRemove({index: $index});">
   		Don't want this one!
   	</button>
   </li>
