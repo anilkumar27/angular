@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="css/signup.css">
+<div class="container">
+  <h2>Sign up for newsletter</h2>
+  <form name="signupForm" novalidate>
+    <div class="col-xs-12">
+      <label for="firstName">First name: </label>
+      <input id="firstName" type="text" name="firstName" placeholder="first name"
+              required ng-model="signupCtrl.firstName">
+      <span class="error" ng-if="signupForm.firstName.$error.required && signupForm.firstName.$touched">
+        First name is required
+      </span>
+    </div>
+    <div class="col-xs-12">
+      <label for="lastName">Last name: </label>
+      <input id="lastName" type="text" name="lastName" placeholder="last name"
+              required ng-model="signupCtrl.lastName">
+      <span class="error" ng-if="signupForm.lastName.$error.required && signupForm.lastName.$touched">
+        Last name is required
+      </span>
+    </div>
+    <div class="col-xs-12">
+      <label for="emailAddress">Email address: </label>
+      <input id="emailAddress" type="email" name="email" placeholder="email"
+              required ng-model="signupCtrl.emailAddress">
+      <span class="error" ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+        Must be a valid e-mail address
+      </span>
+    </div>
+    <div class="col-xs-12">
+      <label for="phoneNumber">Phone number: </label>
+      <input id="phoneNumber" type="text" name="phoneNumber" placeholder="phone number"
+              pattern="\d{3}-\d{3}-\d{4}" required ng-model="signupCtrl.phoneNumber">
+      <span class="error" ng-if="signupForm.phoneNumber.$invalid && signupForm.phoneNumber.$touched">
+        Phone must be in format: ###-###-####
+      </span>
+    </div>
+    <div class="col-xs-12">
+      <label for="menuNumber">Favorite dish number: </label>
+      <input id="menuNumber" type="text" name="menuNumber" placeholder="Favorite menu number"
+              required ng-model="signupCtrl.menuNumber">
+      <span class="error">
+        {{ signupCtrl.shortNameError }}
+      </span>
+    </div>
+    <div id="formReady" class="col-xs-12" ng-if="!signupForm.$invalid">
+      Form is ready to be sent!
+    </div>
+    <input type="submit" ng-disabled="signupForm.$invalid" ng-click="signupCtrl.submit()">
+    <div id="message" ng-if="signupCtrl.saved">{{ signupCtrl.message }}</div>
+  </form>
+</div>
